@@ -1,0 +1,17 @@
+# mod_rewrite starts here
+
+RewriteEngine on
+
+# does not apply system directories 
+
+RewriteCond %{REQUEST_FILENAME} !-directories
+
+# Check for file in directories with .php extension
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# here we actually show the page that has the .php extension
+
+
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
