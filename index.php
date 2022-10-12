@@ -8,18 +8,15 @@
     <link rel="stylesheet" href="assets/css/bootstrap5.min.css">
     <link rel="stylesheet" href="assets/lib/fontawsome/css/all.css">
 
-    <link rel="shortcut icon" href="assets/img/logo.jpg">
+    <link rel="shortcut icon" href="assets/img/logo.png">
 </head>
 <body>
     <section>
-    <nav class="navbar bg-dark navbar-dark">
-        <div class="container">
-            <a class="navbar-brand d-flex gap-2 align-items-center" href="#">
-                <img src="assets/img/logo.png" alt="Bootstrap" height="74">
-                <p class="fw-bold fs-2">Comrade Music</p>
-            </a>
-        </div>
-    </nav>
+        <?php include_once "assets/includes/nav.php"; ?>
     </section>
+
+
+
+    <?php include_once "assets/includes/footer.php";  ?>
 </body>
 </html>
