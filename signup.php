@@ -1,3 +1,6 @@
+<?php 
+    require "assets/includes/sessions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,7 @@
     <link rel="stylesheet" href="assets/lib/fontawsome/css/all.css">
 
     <link rel="shortcut icon" href="assets/img/logo.png">
+    <link rel="stylesheet" href="assets/css/animate.css">
 </head>
 <body>
     <section>
@@ -18,7 +22,8 @@
     <section>
         <div class="container my-4">
             <div class="card mx-auto shadow" style="max-width: 600px;">
-                <h5 class="card-header">Sign Up</h5>
+                <?php echo successMsg(); echo errorMsg(); ?>
+                <h5 class="card-header py-3">Sign Up</h5>
                 <form action="assets/config/register_config.php" method="post" class="card-body row">
                     <div class="col-md-6 mb-3">
                         <label>First Name</label>
@@ -51,8 +56,11 @@
                     <div class="col-md-6 mb-3">
                         <label>Password</label>
                         <div class="d-flex">
+                            <!-- <input type="password" name="pass" id="input1" pattern="[a-zA-Z0-9]{8}" title="uppercase, lowercase and number" class="form-control" required> -->
                             <input type="password" name="pass" id="input1" class="form-control" required>
+
                             <button type="button" id="btn1" class="btn fa fa-eye" onclick="showPass('btn1','input1')"></button>
+                            <small id="notice"></small>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">

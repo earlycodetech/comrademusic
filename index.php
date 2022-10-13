@@ -7,6 +7,7 @@
     <title>Comrade Music</title>
     <link rel="stylesheet" href="assets/css/bootstrap5.min.css">
     <link rel="stylesheet" href="assets/lib/fontawsome/css/all.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
 
     <link rel="shortcut icon" href="assets/img/logo.png">
 </head>
