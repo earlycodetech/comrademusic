@@ -1,6 +1,9 @@
 <?php
+    require "db_con.php";
     require "../includes/sessions.php";
-    // If the user clicked our button
+
+    date_default_timezone_set("Africa/Lagos");
+
     if (!isset($_POST['register'])) {
        header("Location: ../../signup");
     }else{
@@ -14,10 +17,12 @@
         $phone = $_POST['phone'];
         $password = $_POST['pass'];
         $conPassword = $_POST['conpass'];
-
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $date = date("Y-m-d h:i:s");
         $uppercase = preg_match('@[A-Z]@', $password);
         $lowercase = preg_match('@[a-z]@', $password);
         $number    = preg_match('@[0-9]@', $password);
+
         
         
         if (empty($firstName) || empty($lastName) || empty($email) || empty($userName) || empty($country) || empty($dob) || empty($phone) || empty($password) || empty($conPassword)) {
@@ -40,9 +45,27 @@
             $_SESSION['error_msg'] = "Passwords do not match!";
             header("Location: ../../signup");
         }else{
+            // Prepare the SQL command
+            $sql = "INSERT INTO users(firstname,lastname,email,uname,country,dob,phone,passwords,date_created) VALUES(?,?,?,?,?,?,?,?,?)";
 
-            $_SESSION['success_msg'] = "Account Created!";
-            header("Location: ../../signup");
+            // Initialize Connection to DB
+            $stmt = mysqli_stmt_init($connectDb);
+
+            // Prepare Stmt with SQL
+            mysqli_stmt_prepare($stmt,$sql);
+
+            // Bind Parameters
+            mysqli_stmt_bind_param($stmt,"sssssssss",$firstName,$lastName,$email,$userName,$country,$dob,$phone,$hash,$date);
+
+           if (!mysqli_stmt_execute($stmt)) {
+                $_SESSION['error_msg'] = "Opps! Something went wrong";
+                header("Location: ../../signup");
+           }else{
+            $_SESSION['success_msg'] = "Account has been created, please login to continue!";
+            header("Location: ../../signin");
+           }
+
+
 
         }
 
