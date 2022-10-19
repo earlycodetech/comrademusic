@@ -30,6 +30,12 @@
         }
     }
 
+
+    function auth(){
+        if (!isset($_SESSION['user'])) {
+            header('Location: ../signin');
+        }
+    }
    
 
 

@@ -23,8 +23,8 @@
         <div class="container my-4">
             <div class="card mx-auto shadow" style="max-width: 600px;">
                 <?php echo successMsg(); echo errorMsg(); ?>
-                <h5 class="card-header py-3">Sign Up</h5>
-                <form action="assets/config/register_config.php" method="post" class="card-body row">
+                <h5 class="card-header py-3">Sign In</h5>
+                <form action="assets/config/login_config.php" method="post" class="card-body row">
                     <div class="col-md-6 mb-3">
                         <label>Email</label>
                         <input type="email" name="email" class="form-control" required>
