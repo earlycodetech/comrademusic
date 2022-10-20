@@ -55,9 +55,18 @@
     <section>
         <div class="container">
             <div class="card mt-5 shadow p-3">
+                <a href="music" class="btn btn-primary">Add New Song</a>
                 <?php echo errorMsg(); echo successMsg(); ?>
                 <div class="d-flex justify-content-end">
-                    <img src="../assets/img/logo.png" alt="" height="100px" class="p-2 shadow">
+                    <div>
+                        <form action="../assets/config/file_config.php" method="post" enctype="multipart/form-data">
+                            <label for="img">
+                                <img src="../assets/img/profpic/<?php echo (empty($row['prof_pic']))?"user.png":$row['prof_pic'].'?'.mt_rand();  ?>" alt="" height="200px" class="p-2 shadow d-block mx-auto">
+                            </label>
+                            <input type="file" id="img" name="file" class="d-none form-control form-control-sm mt-3">
+                            <button class="btn btn-secondary btn-sm mt-2" name="changeImg">Reset Image</button>
+                        </form>
+                    </div>
                 </div>
                     <form action="../assets/config/update_config.php" method="post" class="card-body row">
                         <div class="col-md-6 mb-3">

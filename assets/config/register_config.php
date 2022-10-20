@@ -18,6 +18,7 @@
         $password = $_POST['pass'];
         $conPassword = $_POST['conpass'];
         $hash = password_hash($password, PASSWORD_DEFAULT);
+        $role = "user";
         $date = date("Y-m-d h:i:s");
         $uppercase = preg_match('@[A-Z]@', $password);
         $lowercase = preg_match('@[a-z]@', $password);
@@ -46,7 +47,7 @@
             header("Location: ../../signup");
         }else{
             // Prepare the SQL command
-            $sql = "INSERT INTO users(firstname,lastname,email,uname,country,dob,phone,passwords,date_created) VALUES(?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO users(firstname,lastname,email,uname,country,dob,phone,passwords,user_role,date_created) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
             // Initialize Connection to DB
             $stmt = mysqli_stmt_init($connectDb);
@@ -55,7 +56,7 @@
             mysqli_stmt_prepare($stmt,$sql);
 
             // Bind Parameters
-            mysqli_stmt_bind_param($stmt,"sssssssss",$firstName,$lastName,$email,$userName,$country,$dob,$phone,$hash,$date);
+            mysqli_stmt_bind_param($stmt,"ssssssssss",$firstName,$lastName,$email,$userName,$country,$dob,$phone,$hash,$role,$date);
 
            if (!mysqli_stmt_execute($stmt)) {
                 $_SESSION['error_msg'] = "Opps! Something went wrong";

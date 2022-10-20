@@ -33,7 +33,11 @@
 
                 $_SESSION['user'] = $row['id'];
                 $_SESSION['fullName'] = $row['uname'];
+               if ($row['user_role'] === 'admin') {
+                header("Location: ../../admin/dashboard");
+               }else{
                 header("Location: ../../comrade/dashboard");
+               }
             }
         }
     }
