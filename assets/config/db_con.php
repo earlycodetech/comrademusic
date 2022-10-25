@@ -1,9 +1,15 @@
 <?php
 
+//     $server = "localhost";
+//     $dbuser = "root";
+//     $dbpass = "";
+//     $dbname = "comrade_music";
+
+
     $server = "localhost";
-    $dbuser = "root";
-    $dbpass = "";
-    $dbname = "comrade_music";
+    $dbuser = "u162278070_comrade";
+    $dbpass = "a|iEmn8@W";
+    $dbname = "u162278070_comrade";
     
    $connectDb = mysqli_connect($server,$dbuser,$dbpass,$dbname);
 

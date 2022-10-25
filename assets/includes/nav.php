@@ -13,6 +13,7 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="signup">Sign Up</a></li>
                 <li><a class="dropdown-item" href="signin">Sign In</a></li>
+                <li><a class="dropdown-item" href="contact">Contact us</a></li>
                 
             </ul>
         </div>

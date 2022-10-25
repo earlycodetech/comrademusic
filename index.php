@@ -1,3 +1,9 @@
+<?php 
+    require "assets/config/db_con.php";
+
+    $sql = "SELECT * FROM users WHERE user_role = 'user'";
+    $query = mysqli_query($connectDb,$sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +21,22 @@
     <section>
         <?php include_once "assets/includes/nav.php"; ?>
     </section>
-
+    <section>
+        <div class="container mt-3">
+            <div class="row">
+                <?php while($row = mysqli_fetch_assoc($query)){  ?>
+                <div class="col-md-2 mb-3">
+                    <a href="songs?q=<?php echo $row['id']; ?>" class="card nav-link shadow">
+                        <img src="assets/img/profpic/<?php echo (empty($row['prof_pic']))?"user.png":$row['prof_pic'].'?'.mt_rand();  ?>" alt="" class="card-img-top">
+                        <p class="fs-5 text-center card-header fw-bold">
+                            <?php echo $row['uname']; ?>
+                        </p>
+                    </a>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
 
 
     <?php include_once "assets/includes/footer.php";  ?>
